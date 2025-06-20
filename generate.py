@@ -29,11 +29,12 @@ def import_airfoil(filename):
 
 def rectangle(span, chord, airfoil):
     airfoil = list(map(lambda x: (x[0]*chord, x[1]*chord), airfoil))
-    wing = (cq.Workplane("XY")
-            .polyline(airfoil)
-            .close()
-            .toPending()
-            .extrude(span))
+    wing = (
+        cq.Workplane("XY")
+        .polyline(airfoil)
+        .close()
+        .extrude(span)
+    )
     return wing
 
 
